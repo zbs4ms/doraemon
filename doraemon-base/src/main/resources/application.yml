@@ -1,0 +1,39 @@
+server:
+    port: 9090
+
+mail:
+    smtpHost: smtp.163.com
+#    smtpPort:
+    account: jishitech666@163.com
+    passwd: jishitech2017
+#    from: jishitech666@163.com
+#    to:
+#    cc:
+#    bcc:
+#    ssl:
+#     notSave:
+#    savePath:
+
+
+spring:
+  redis:
+    host: 192.168.81.13
+    port: 26379
+#    password: aaa
+    sentinel:
+      master: 192.168.81.13
+      nodes: 1
+#    pool:
+#      max-active: 1
+#      max-wait: 1
+#      max-idle: 3
+#      min-idle: 5
+#    ssl: false
+#    port: 3306
+#    timeout: 343
+#    url: 3443
+#    database: 0
+#    cluster:
+#      max-redirects: fd
+#      nodes: fds
+
