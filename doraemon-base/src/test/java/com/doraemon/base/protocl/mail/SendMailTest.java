@@ -1,6 +1,5 @@
 package com.doraemon.base.protocl.mail;
 
-import com.doraemon.base.Main;
 import com.doraemon.base.protocol.mail.SendMail;
 import com.doraemon.base.util.RandomUtil;
 import org.junit.Test;

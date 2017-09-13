@@ -1,0 +1,148 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail",
+      "type": "com.doraemon.base.protocol.mail.MailConfiguration"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "name": "redis",
+      "type": "com.doraemon.base.redis.RedisConfiguration"
+    },
+    {
+      "sourceType": "com.doraemon.base.dao.SbmMyBatisConfig",
+      "name": "spring.datasource.master",
+      "sourceMethod": "masterDataSource()",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.doraemon.base.dao.SbmMyBatisConfig",
+      "name": "spring.datasource.slave1",
+      "sourceMethod": "slave1DataSource()",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.account",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.bcc",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.cc",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.context",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.from",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "defaultValue": true,
+      "name": "mail.not-save",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.passwd",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.save-path",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.smtp-host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "defaultValue": 25,
+      "name": "mail.smtp-port",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "defaultValue": false,
+      "name": "mail.ssl",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.subject",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.to",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.protocol.mail.MailConfiguration",
+      "name": "mail.values",
+      "type": "java.lang.String[]"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "name": "redis.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 8,
+      "name": "redis.max-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 8,
+      "name": "redis.max-total",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 0,
+      "name": "redis.max-wait-millis",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 0,
+      "name": "redis.min-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "name": "redis.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 6379,
+      "name": "redis.port",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 0,
+      "name": "redis.timeout",
+      "type": "java.lang.Integer"
+    }
+  ]
+}

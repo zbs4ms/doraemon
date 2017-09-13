@@ -25,54 +25,54 @@ import com.doraemon.base.util.StringReplace;
 public class SendMail {
 
     @Autowired
-    MailConfig mailConfig;
+    MailConfiguration mailConfiguration;
 
     public SendMail setTo(String to) {
-        mailConfig.setTo(to);
+        mailConfiguration.setTo(to);
         return this;
     }
 
     public SendMail setForm(String form) {
-        mailConfig.setFrom(form);
+        mailConfiguration.setFrom(form);
         return this;
     }
 
     public SendMail setCc(String cc) {
-        mailConfig.setCc(cc);
+        mailConfiguration.setCc(cc);
         return this;
     }
 
     public SendMail setBcc(String bcc) {
-        mailConfig.setBcc(bcc);
+        mailConfiguration.setBcc(bcc);
         return this;
     }
 
     public SendMail setSubject(String subject) {
-        mailConfig.setSubject(subject);
+        mailConfiguration.setSubject(subject);
         return this;
     }
 
     public SendMail setContext(String context) {
-        mailConfig.setContext(context);
+        mailConfiguration.setContext(context);
         return this;
     }
 
     public SendMail setValues(String[] values) {
-        mailConfig.setValues(values);
+        mailConfiguration.setValues(values);
         return this;
     }
     public void send() throws Exception {
-        log.info("[邮件配置] : " + mailConfig.toString());
+        log.info("[邮件配置] : " + mailConfiguration.toString());
         //1. 参数校验
-        checkParameter(mailConfig, mailConfig.getSubject());
+        checkParameter(mailConfiguration, mailConfiguration.getSubject());
         //2. 获取Session
-        Session session = getSession(mailConfig);
+        Session session = getSession(mailConfiguration);
         //3. 创建邮件
-        MimeMessage mimeMessage = createMail(session, mailConfig, mailConfig.getSubject(), mailConfig.getContext(), mailConfig.getValues());
+        MimeMessage mimeMessage = createMail(session, mailConfiguration, mailConfiguration.getSubject(), mailConfiguration.getContext(), mailConfiguration.getValues());
         //4. 发送邮件
-        sendMail(session, mimeMessage, mailConfig);
+        sendMail(session, mimeMessage, mailConfiguration);
         //5. 保存邮件
-        saveMailToLocal(mimeMessage, mailConfig);
+        saveMailToLocal(mimeMessage, mailConfiguration);
     }
 
     /**
@@ -82,7 +82,7 @@ public class SendMail {
      * @param mailConfig
      * @throws Exception
      */
-    private static void saveMailToLocal(MimeMessage mimeMessage, MailConfig mailConfig) throws Exception {
+    private static void saveMailToLocal(MimeMessage mimeMessage, MailConfiguration mailConfig) throws Exception {
         if (mailConfig.isNotSave())
             return;
         OutputStream out = null;
@@ -107,7 +107,7 @@ public class SendMail {
      * @param mailConfig
      * @throws Exception
      */
-    private static void sendMail(Session session, MimeMessage mimeMessage, MailConfig mailConfig) throws Exception {
+    private static void sendMail(Session session, MimeMessage mimeMessage, MailConfiguration mailConfig) throws Exception {
         Transport transport = null;
         try {
             transport = session.getTransport();
@@ -126,7 +126,7 @@ public class SendMail {
      * @param mailConfig
      * @return
      */
-    private static Session getSession(MailConfig mailConfig) {
+    private static Session getSession(MailConfiguration mailConfig) {
         Properties props = new Properties();
         String port;
         if (mailConfig.ssl) {
@@ -157,7 +157,7 @@ public class SendMail {
      * @return
      * @throws Exception
      */
-    private static MimeMessage createMail(Session session, MailConfig mailConfig, String subject, String content, String... values) throws Exception {
+    private static MimeMessage createMail(Session session, MailConfiguration mailConfig, String subject, String content, String... values) throws Exception {
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(mailConfig.getFrom(), mailConfig.getFrom(), "UTF-8"));  //发件人
         for (String toName : mailConfig.getTo().split(",")) {
@@ -185,7 +185,7 @@ public class SendMail {
      *
      * @param mailConfig
      */
-    private void checkParameter(MailConfig mailConfig, String subject) {
+    private void checkParameter(MailConfiguration mailConfig, String subject) {
         Preconditions.checkNotNull(mailConfig.getSmtpHost(), "SMTP 服务器地址不能为空.");
         Preconditions.checkNotNull(mailConfig.getAccount(), "邮件服务器账号不能为空.");
         Preconditions.checkNotNull(mailConfig.getPasswd(), "邮件服务器密码不能为空.");
