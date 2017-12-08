@@ -17,7 +17,7 @@ import java.util.Map;
 public class RedisOperation {
 
     @Autowired
-    private RedisConfiguration redisProperties;
+    private RedisConfiguration redisConfiguration;
 
     @Autowired
     private JedisPool jedisPool;
@@ -32,9 +32,16 @@ public class RedisOperation {
     private Jedis getJedis() throws Exception {
         if(jedisPool == null)
             throw new Exception("redis连接为空.");
-        if (usePool)
-            return jedisPool.getResource();
-        return new Jedis(redisProperties.getHost(), redisProperties.getPort());
+        Jedis jedis;
+        if (usePool) {
+            jedis = jedisPool.getResource();
+        }else {
+            jedis = new Jedis(redisConfiguration.getHost(), redisConfiguration.getPort());
+            if (redisConfiguration.getPassword() != null)
+                jedis.auth(redisConfiguration.getPassword());
+        }
+        jedis.select(redisConfiguration.getDatabase());
+        return jedis;
     }
 
     private void close(Jedis jedis) {
@@ -68,6 +75,21 @@ public class RedisOperation {
         try {
             jedis = getJedis();
             return jedis.set(key,value);
+        }finally {
+            this.close(jedis);
+        }
+    }
+
+    /**
+     * redis 的 delete 方法
+     * @param key
+     * @return
+     */
+    public Long del(String key) throws Exception {
+        Jedis jedis = null;
+        try{
+            jedis = getJedis();
+            return jedis.del(key);
         }finally {
             this.close(jedis);
         }

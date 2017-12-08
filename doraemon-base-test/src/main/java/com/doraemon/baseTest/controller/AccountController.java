@@ -37,4 +37,11 @@ public class AccountController extends MyBaseController {
         return ResponseWrapper().addData(account).addMessage("操作成功！！").ExeSuccess();
     }
 
+    @RequestMapping(value="redis", method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject redis() throws Exception {
+        accountService.redisTest();
+        return ResponseWrapper().addMessage("ok").ExeSuccess();
+    }
+
 }

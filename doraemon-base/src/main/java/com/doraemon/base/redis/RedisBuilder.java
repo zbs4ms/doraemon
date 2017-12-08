@@ -30,7 +30,15 @@ public class RedisBuilder {
     public JedisPool getJedisPool(JedisPoolConfig jedisPoolConfig){
         String host = redisProperties.getHost();
         int port = redisProperties.getPort();
-        JedisPool jedisPool =  new JedisPool(jedisPoolConfig,host,port);
+        int timeout = redisProperties.getTimeout();
+        String password = redisProperties.getPassword();
+        int database = redisProperties.getDatabase();
+        JedisPool jedisPool;
+        if(password == null) {
+            jedisPool = new JedisPool(jedisPoolConfig, host, port,timeout,password,database);
+        }else {
+            jedisPool = new JedisPool(jedisPoolConfig, host, port);
+        }
         return jedisPool;
     }
 }

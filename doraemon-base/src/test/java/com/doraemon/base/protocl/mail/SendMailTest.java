@@ -11,15 +11,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * Created by zbs on 2017/6/5.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Main.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest(classes = Main.class)
 public class SendMailTest {
 
-    @Autowired
-    SendMail sendMail;
+//    @Autowired
+//    SendMail sendMail;
 
     @Test
     public void sendMail() throws Exception {
+        SendMail sendMail = new SendMail();
         sendMail.setTo("zhoubinshan@163.com,zbs4ms@163.com")
                 .setCc("zbs4ms@163.com,zhoubinshan@bbdservice.com")
                 .setBcc("zhoubinshan@bbdservice.com,jishitech666@163.com")

@@ -148,6 +148,22 @@
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
+        <!-- 验证码 -->
+        <dependency>
+            <groupId>com.github.bingoohuang</groupId>
+            <artifactId>patchca</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.3</version>
+        </dependency>
     </dependencies>
 
     <properties>

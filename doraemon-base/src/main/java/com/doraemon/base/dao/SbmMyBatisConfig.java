@@ -2,16 +2,12 @@ package com.doraemon.base.dao;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.log4j.Log4j;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.ho.yaml.Yaml;
-import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 import javax.sql.DataSource;
@@ -71,8 +67,9 @@ public class SbmMyBatisConfig {
         return mapperScannerConfigurer;
     }
 
+    @Bean
     private String getBasePackage() throws Exception {
-        InputStream ips = SbmMyBatisConfig.class.getResourceAsStream("/application.yml");
+        InputStream ips = SbmMyBatisConfig.class.getResourceAsStream("/application1.yml");
         Map<String,Object> map = Yaml.loadType(ips, HashMap.class);
         Map<String,Object> mybatisObject = map.get("spring") == null ? null :(Map)map.get("spring") ;
         if(mybatisObject == null)

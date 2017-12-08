@@ -100,6 +100,12 @@
     },
     {
       "sourceType": "com.doraemon.base.redis.RedisConfiguration",
+      "defaultValue": 0,
+      "name": "redis.database",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.doraemon.base.redis.RedisConfiguration",
       "name": "redis.host",
       "type": "java.lang.String"
     },

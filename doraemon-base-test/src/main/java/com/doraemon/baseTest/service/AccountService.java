@@ -1,5 +1,6 @@
 package com.doraemon.baseTest.service;
 
+import com.doraemon.base.redis.RedisOperation;
 import com.doraemon.baseTest.dao.mapper.AccountMapper;
 import com.doraemon.baseTest.dao.models.Account;
 import com.github.pagehelper.PageHelper;
@@ -23,6 +24,9 @@ public class AccountService {
     @Autowired
     private AccountMapper accountMapper;
 
+    @Autowired
+    private RedisOperation redisOperation;
+
    // @WriteDataSource
     public Account findAccountIdByCompanyId(Long companyId){
         Account account = accountMapper.findManagerIdByCompanyId(companyId);
@@ -37,6 +41,11 @@ public class AccountService {
         Preconditions.checkNotNull(account,"该企业管理员为空");
         PageInfo page = new PageInfo(account);
         return page;
+    }
+
+    public void redisTest() throws Exception {
+        redisOperation.usePool().set("test","test");
+        System.out.println(redisOperation.usePool().get("test"));
     }
 
 }

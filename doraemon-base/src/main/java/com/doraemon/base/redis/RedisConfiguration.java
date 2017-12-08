@@ -20,5 +20,6 @@ public class RedisConfiguration {
     private String host = null;
     private int timeout = 1000 * 60;
     private String password = null;
+    private int database = 0;
 
 }

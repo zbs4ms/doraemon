@@ -7,6 +7,17 @@ import java.util.Random;
  */
 public class RandomUtil {
 
+
+    private static  String[] letterAndNum = {
+            "A", "B", "C", "D", "E", "F", "G", "H",
+            "I", "J", "K", "L", "M", "N", "O", "P",
+            "Q", "R", "S", "T", "U", "V", "W", "X",
+            "Y", "Z", "0", "1", "2", "3", "4", "5",
+            "6", "7", "8", "9",
+    };
+
+    private  static String base = "abcdefghijklmnopqrstuvwxyz0123456789";
+
     /**
      * 获取任意个中文字符串
      * @param length
@@ -30,4 +41,34 @@ public class RandomUtil {
         return sb.toString();
     }
 
+
+    /**
+     * 生成随机的字母加数字的串
+     * @param length
+     * @return
+     * @throws Exception
+     */
+    public static String getRandomLetterAndNum(int length) throws Exception {
+        Random r = new Random();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            sb.append(letterAndNum[r.nextInt(letterAndNum.length)]);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 获取一定长度的随机字符串
+     * @param length 指定字符串长度
+     * @return 一定长度的字符串
+     */
+    public static String getRandomStringByLength(int length) {
+        Random random = new Random();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            int number = random.nextInt(base.length());
+            sb.append(base.charAt(number));
+        }
+        return sb.toString();
+    }
 }

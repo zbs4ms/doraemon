@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * Created by zbs on 2017/6/5.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Main.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest(classes = Main.class)
 public class RedisTest {
 
     @Autowired
