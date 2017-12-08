@@ -69,7 +69,7 @@ public class SbmMyBatisConfig {
 
     @Bean
     private String getBasePackage() throws Exception {
-        InputStream ips = SbmMyBatisConfig.class.getResourceAsStream("/application1.yml");
+        InputStream ips = SbmMyBatisConfig.class.getResourceAsStream("/application.yml");
         Map<String,Object> map = Yaml.loadType(ips, HashMap.class);
         Map<String,Object> mybatisObject = map.get("spring") == null ? null :(Map)map.get("spring") ;
         if(mybatisObject == null)
