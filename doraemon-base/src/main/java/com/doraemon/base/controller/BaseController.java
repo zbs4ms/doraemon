@@ -1,6 +1,7 @@
 package com.doraemon.base.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.doraemon.base.exceptions.PermissionExceptions;
 import com.doraemon.base.exceptions.ShowExceptions;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,6 +51,8 @@ public abstract class BaseController {
             return ResponseWrapper().addMessage("系统异常!").ExeFaild(500);
         } else if (e instanceof ShowExceptions){
             return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(406);
+        } else if (e instanceof PermissionExceptions) {
+            return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(401);
         }
         return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(400);
     }

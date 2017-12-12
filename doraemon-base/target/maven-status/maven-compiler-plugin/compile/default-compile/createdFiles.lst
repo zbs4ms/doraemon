@@ -33,6 +33,7 @@ com/doraemon/base/dao/base/MyBaseInsertProvider.class
 com/doraemon/base/util/VerifyParameter.class
 com/doraemon/base/dao/target/DataSourceAopInService.class
 com/doraemon/base/util/xml/XMLParser.class
+com/doraemon/base/exceptions/PermissionExceptions.class
 com/doraemon/base/dao/base/BaseEntity.class
 com/doraemon/base/dao/DynamicDataSource.class
 com/doraemon/base/dao/DataSourceBean.class
