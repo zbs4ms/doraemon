@@ -104,6 +104,7 @@ public class MyBaseInsertProvider  extends BaseInsertProvider {
         return sql.toString();
     }
 
+
     /**
      * 插入不为null的字段,这段代码比较复杂，这里举个例子
      * CountryU生成的insertSelective方法结构如下：

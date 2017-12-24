@@ -30,4 +30,5 @@ public class SendMailTest {
                 .setValues(new String[]{RandomUtil.getRandomGBK(2),RandomUtil.getRandomGBK(4)})
                 .send();
     }
+
 }

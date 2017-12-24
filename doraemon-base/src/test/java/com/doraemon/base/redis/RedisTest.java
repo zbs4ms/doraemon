@@ -18,6 +18,8 @@ public class RedisTest {
 
     @Test
     public void redis() throws Exception {
+        RedisOperation redisOperation = new RedisOperation();
+
         redisOperation.usePool().get("aaa");
         redisOperation.usePool().set("aaa","bbbb");
         System.out.println("aaa = " + redisOperation.get("aaa"));

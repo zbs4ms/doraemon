@@ -34,7 +34,7 @@ public class RedisBuilder {
         String password = redisProperties.getPassword();
         int database = redisProperties.getDatabase();
         JedisPool jedisPool;
-        if(password == null) {
+        if(password != null) {
             jedisPool = new JedisPool(jedisPoolConfig, host, port,timeout,password,database);
         }else {
             jedisPool = new JedisPool(jedisPoolConfig, host, port);

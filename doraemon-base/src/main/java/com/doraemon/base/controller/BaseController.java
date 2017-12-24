@@ -48,13 +48,19 @@ public abstract class BaseController {
     @ExceptionHandler
     public @ResponseBody JSONObject exceptionHandle(Exception e) {
         if (e == null) {
-            return ResponseWrapper().addMessage("系统异常!").ExeFaild(500);
+            return ResponseWrapper().addMessage("系统异常!").ExeFaild(CodeEnum.FAILURE_UNKNOWN_ERROR.getCode());
         } else if (e instanceof ShowExceptions){
-            return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(406);
+           // ShowExceptions se = (ShowExceptions) e;
+            e.printStackTrace();
+            Result result = ResponseWrapper().addError(e).addMessage(e.getMessage());
+            //return (se.getCode()!=null ? result.setErrorMark(se.getCode()) : result).ExeFaild(CodeEnum.FAILURE_SHOW_MSG.getCode());
+            return result.ExeFaild(CodeEnum.FAILURE_SHOW_MSG.getCode());
         } else if (e instanceof PermissionExceptions) {
-            return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(401);
+            e.printStackTrace();
+            return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(CodeEnum.FAILURE_NO_PERMISSIONS.getCode());
         }
-        return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(400);
+        e.printStackTrace();
+        return ResponseWrapper().addError(e).addMessage(e.getMessage()).ExeFaild(CodeEnum.FAILURE_ERROR.getCode());
     }
 
     protected HttpServletRequest getCurrentRequest(){

@@ -3,6 +3,7 @@ package com.doraemon.base.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.doraemon.base.util.IpTool;
+import lombok.extern.log4j.Log4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by wang on 16/8/30.
  */
+@Log4j
 public class ControllerResult extends Result {
 
     public static final String USER_ID = "userId";
@@ -30,7 +32,7 @@ public class ControllerResult extends Result {
 
         this.userId = request.getHeader(USER_ID);
         this.userIp = IpTool.getIp(request);
-        this.logger.info("User Id:" + userId + " IP:" + userIp + " params: " + getRequestParams(request));
+       // this.logger.info("User Id:" + userId + " IP:" + userIp + " params: " + getRequestParams(request));
     }
 
     private String getRequestParams(HttpServletRequest request) {

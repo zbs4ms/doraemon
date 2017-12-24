@@ -1,6 +1,8 @@
 package com.doraemon.base.redis;
 
+import com.doraemon.base.guava.DPreconditions;
 import lombok.Data;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.Jedis;
@@ -14,6 +16,7 @@ import java.util.Map;
  */
 @Configuration
 @Data
+@Log4j
 public class RedisOperation {
 
     @Autowired
@@ -24,8 +27,15 @@ public class RedisOperation {
 
     private boolean usePool = false;
 
+    private boolean usePassword = false;
+
     public RedisOperation usePool() {
         usePool = true;
+        return this;
+    }
+
+    public RedisOperation usePassword() {
+        usePassword = true;
         return this;
     }
 
@@ -37,10 +47,13 @@ public class RedisOperation {
             jedis = jedisPool.getResource();
         }else {
             jedis = new Jedis(redisConfiguration.getHost(), redisConfiguration.getPort());
-            if (redisConfiguration.getPassword() != null)
-                jedis.auth(redisConfiguration.getPassword());
         }
-        jedis.select(redisConfiguration.getDatabase());
+        log.debug("redis的连接为: ip:" + redisConfiguration.getHost() +
+                " host:" + redisConfiguration.getPort() );
+        if (usePassword || redisConfiguration.getPassword()!=null) {
+            jedis.auth(redisConfiguration.getPassword());
+            log.debug(" redis的密码是:password:" + redisConfiguration.getPassword());
+        }
         return jedis;
     }
 
@@ -59,6 +72,8 @@ public class RedisOperation {
         Jedis jedis = null;
         try {
             jedis = getJedis();
+            log.info("redis查询 key:"+key);
+            DPreconditions.checkNotNullAndEmpty(key,"传入redis查询的值不能为空,或者为''");
             return jedis.get(key);
         } finally {
             this.close(jedis);
@@ -74,6 +89,7 @@ public class RedisOperation {
         Jedis jedis = null;
         try {
             jedis = getJedis();
+            log.info("redis插入值 key:"+key+" value:"+value);
             return jedis.set(key,value);
         }finally {
             this.close(jedis);

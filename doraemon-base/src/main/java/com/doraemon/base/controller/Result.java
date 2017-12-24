@@ -2,15 +2,18 @@ package com.doraemon.base.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import lombok.Data;
 
 /**
  * Created by wang on 16/1/31.
  */
+
 public class Result<T> implements DataWrapper {
     protected boolean state = false;
     protected String message;
     protected T tempData;
     protected Integer code;
+    protected Integer errorMark;
 
     /**
      * 取得包装器中的真实内容
@@ -29,6 +32,16 @@ public class Result<T> implements DataWrapper {
     public Integer getCode() {
         return code;
     }
+
+    public Result setErrorMark(Integer errorMark){
+        this.errorMark = errorMark;
+        return this;
+    }
+
+    public Integer getErrorMark(){
+        return errorMark;
+    }
+
 
     /**
      * 填充返回消息

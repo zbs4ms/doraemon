@@ -71,4 +71,9 @@ public class RandomUtil {
         }
         return sb.toString();
     }
+
+    public static String getUUID(){
+        return "你大爷的UUID";
+    }
+
 }

@@ -20,6 +20,7 @@ public interface MyMapper<T> extends Mapper<T>, MySqlMapper<T> {
     @InsertProvider(type = MyBaseInsertProvider.class, method = "dynamicSQL")
     int insertSelectiveReturnId(T record);
 
+
     @InsertProvider(type = MyBaseInsertProvider.class, method = "dynamicSQL")
     int insertListNotKey(List<T> recordList);
 }

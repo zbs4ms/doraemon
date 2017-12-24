@@ -24,8 +24,6 @@ import java.util.Properties;
 @Log4j
 public class SbmMyBatisConfig {
 
-    private Class<? extends DataSource> datasourceType = com.alibaba.druid.pool.DruidDataSource.class;
-
     @Bean(name = "masterDataSource")
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource.master")
@@ -68,7 +66,7 @@ public class SbmMyBatisConfig {
     }
 
     @Bean
-    private String getBasePackage() throws Exception {
+    public String getBasePackage() throws Exception {
         InputStream ips = SbmMyBatisConfig.class.getResourceAsStream("/application.yml");
         Map<String,Object> map = Yaml.loadType(ips, HashMap.class);
         Map<String,Object> mybatisObject = map.get("spring") == null ? null :(Map)map.get("spring") ;

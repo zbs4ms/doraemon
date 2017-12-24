@@ -1,15 +1,17 @@
 package com.doraemon.base.protocol.mail;
 
 
+import com.doraemon.base.guava.DPreconditions;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.io.*;
 import java.util.Date;
 import java.util.Properties;
@@ -61,6 +63,8 @@ public class SendMail {
         mailConfiguration.setValues(values);
         return this;
     }
+
+
     public void send() throws Exception {
         log.info("[邮件配置] : " + mailConfiguration.toString());
         //1. 参数校验

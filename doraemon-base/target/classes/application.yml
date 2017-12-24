@@ -31,10 +31,10 @@ mail:
 #    savePath:
 
 redis:
-    host: r-wz911707093dd3a4.redis.rds.aliyuncs.com
+    host: 120.78.217.180
     port: 6379
-    password: Jskj1010
-    database: 0
+#    password: Jskj1010
+#    database: 0
 #  sentinel:
 #    master: 192.168.81.13
 #    nodes: 1
